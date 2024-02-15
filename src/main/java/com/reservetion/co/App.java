@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import com.reservetion.co.Reservation.ReservationBuilder;
+
 /**
  * Hello world!
  *
@@ -38,7 +40,7 @@ public class App
         
         //Creando otra reservación, pero esta vez solo con la fecha de salidad y el destino.
         ReservationBuilder builder2 = new ReservationBuilder();
-        builder.departureDate(LocalDate.of(2024, 3, 20))
+        builder2.departureDate(LocalDate.of(2024, 3, 20))
                 .destination("El cabo");
 
         Reservation reservation2 = builder2.build();

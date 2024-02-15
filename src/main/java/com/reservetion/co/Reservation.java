@@ -12,11 +12,7 @@ public class Reservation {
     private final Diets diet;
     private final TransportationType transportation;
     
-    /*  Constructor que deberia ser usando unicamente por el Builder, en este
-        casi es indiferente validar si es null o no los parametros dado que
-        estos se establecen con los sets en el Builder propiamente.*/
-        
-    Reservation (LocalDate departureDate, short totalDays, String destination,
+    private Reservation (LocalDate departureDate, short totalDays, String destination,
      AccommodationType accomadation, Collection<Activities> activities, Diets diet, 
      TransportationType transportation){
         this.departureDate = departureDate;
@@ -27,7 +23,8 @@ public class Reservation {
         this.diet = diet;
         this.transportation = transportation;
     }
-
+    
+    //Gets
     public LocalDate getDepartureDate() {
         return departureDate;
     }
@@ -54,5 +51,47 @@ public class Reservation {
 
     public TransportationType getTransportation() {
         return transportation;
+    }
+    //Inner Class
+    public static class ReservationBuilder {
+        private LocalDate departureDate;
+        private short totalDays;
+        private String destination;
+        private AccommodationType accomadation;
+        private Collection<Activities> activities;
+        private Diets diet;
+        private TransportationType transportation;
+        
+        public ReservationBuilder departureDate(LocalDate departureDate) {
+            this.departureDate = departureDate;
+            return this;
+        }
+        public ReservationBuilder totalDays(short totalDays) {
+            this.totalDays = totalDays;
+            return this;
+        }
+        public ReservationBuilder destination(String destination) {
+            this.destination = destination;
+            return this;
+        }
+        public ReservationBuilder accomadation(AccommodationType accomadation) {
+            this.accomadation = accomadation;
+            return this;
+        }
+        public ReservationBuilder activities(Collection<Activities> activities) {
+            this.activities = activities;
+            return this;
+        }
+        public ReservationBuilder diets(Diets diet) {
+            this.diet = diet;
+            return this;
+        }
+        public ReservationBuilder transportation(TransportationType transportation) {
+            this.transportation = transportation;
+            return this;
+        }
+        public Reservation build() {
+            return new Reservation(departureDate, totalDays, destination, accomadation, activities, diet, transportation);
+        }
     }
 }
