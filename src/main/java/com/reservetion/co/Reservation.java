@@ -52,6 +52,9 @@ public class Reservation {
     public TransportationType getTransportation() {
         return transportation;
     }
+    public static ReservationBuilder builder(){
+        return new ReservationBuilder();
+    }
     //Inner Class
     public static class ReservationBuilder {
         private LocalDate departureDate;
@@ -90,6 +93,7 @@ public class Reservation {
             this.transportation = transportation;
             return this;
         }
+      
         public Reservation build() {
             return new Reservation(departureDate, totalDays, destination, accomadation, activities, diet, transportation);
         }
